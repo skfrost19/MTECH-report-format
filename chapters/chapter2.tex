@@ -1,0 +1,48 @@
+%%%%%%%%%%%%%%%%%%%%%%% CHAPTER - 1 %%%%%%%%%%%%%%%%%%%%\\
+\chapter{Literature Review}
+\label{C2} %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\noindent\rule{\linewidth}{2pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%% CHAPTER - 1 %%%%%%%%%%%%%%%%%%%%\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\space
+\clearpage
+
+
+\section{Literature Table} \label{Chapter2_SectionA}
+% \lipsum
+%
+% *** FIGURE Example *** %
+% \begin{figure}[t]
+% \centering
+% \includegraphics[width=5.8in, clip, keepaspectratio]{CHAPTER_IMAGES/CHAPTER_2/CHAPTER2_FIGURE1.png}
+% \caption{Example figure of Neural Network Zoo by Asimov Institute \parencite{AsimovInstitute}}
+% \label{fig_chap2_1}
+% \end{figure}
+%
+% \subsection{Subsection A.1} \label{chapter2_SubsectionA.1}
+% \lipsum \parencite{AsimovInstitute}
+%
+% *** TABLE Example *** %
+\begin{center}
+\begin{tabular}{ |p{2cm}||p{=2.7cm}|p{9cm}|  }
+ \hline
+ \ Authors & Paper & Findings\\
+ \hline
+  {Z. Qin, R. Jagerman, K. Hui, et al. \cite{rerank1}}&{Large Language Models are Effective Text Rankers with Pairwise Ranking Prompting}&{This paper introduces “pairwise ranking prompting” for document ranking. It takes two documents and a query, and the LLM is asked to rank the two based on relevance to query. It uses off the shelf LLMs without domain-specific fine tuning. Context is given to the LLM about the task which is - ranking documents making use of few-shot learning.}\\
+ \hline
+  { B. Nouriinanloo and M. Lamothe \cite{rerank2}} & {Re-Ranking Step by Step: Investigating Pre-Filtering for Re-Ranking with Large Language Models}&{This paper introduces an LLM-based pre-filtering step before re-ranking, where passages or documents are filtered out based on their relevance to a query. The pre-filtering helps reduce the noise that could misguide the re-ranking process. Then use of LLM is made for these best candidates to re-rank them. This led to development of re-rankers which were much smaller yet effective}\\
+  \hline
+  {S. Zhuang, B. Liu, B. Koopman, and G. Zuccon \cite{rerank3}} & {Open-source Large Language Models are Strong Zero-shot Query Likelihood Models for Document Ranking}&{This paper explores using open-source LLMs to estimate how likely a document is to be relevant to a given query. Higher likelihood means higher rank. The models perform effectively in zero-shot settings, where no task-specific training is provided. The paper also shows that additional instruction fine-tuning may hinder effectiveness}\\
+  \hline
+  {A. Drozdov, H. Zhuang, Z. Dai, et al. \cite{rerank4}} & {PaRaDe: Passage Ranking using Demonstrations with Large Language Models}&{This research addresses the limitations of zero-shot learning. Incorporates few-shot demonstrations into prompt. Demonstrations are pairs of passages and their relevance scores. The paper argues that presenting the LLM with difficult examples yield better results in ranking tasks. Difficult here means queries or passages that present more challenge to LLM to correctly rank}\\
+  \hline
+  % {Labrak, Y., Bazoge, A., Morin, E., et al.\cite{biomistral}}&{BioMistral: A Collection of Open-Source Pretrained Large Language Models for Medical Domains} & {Explores ensemble models created using different model
+  % merging techniques, demonstrating an improvement in performance. Also shows superior performance in multilingual question answering tasks}\\
+  % \hline
+\end{tabular}
+\captionof{table}{Literature Table}
+\end{center}
+\vspace{-0.75cm}

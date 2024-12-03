@@ -1,0 +1,82 @@
+%%%%%%%%%%%%%%%%%%%%%%% CHAPTER - 3 %%%%%%%%%%%%%%%%%%%%\\
+\chapter{Methodology}
+\label{C3} %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+% \section{Proposed Methodology}
+% The proposed methodology for fine-tuning LLMs includes the following steps:
+% \begin{enumerate}
+%   \item \textbf{Data Collection}: Data collection from public, freely available medical research papers from PubMed Central® \cite{pmc}.
+%   \item \textbf{Data preparation}: Pre-processing the collected data, involving removal of author names, references, tables, figures, etc. Made use of Nvidia NIM API, llama3-70b-instruct for question-answer pair generation. \cite{llama3}
+%   \item \textbf{Fine-tuning}: Fine-tuning the model on question-answer pairs.
+%   \item \textbf{Model Evaluation}: Evaluation of trained model on benchmarking datasets.
+% \end{enumerate}
+
+
+% \section{Technical Aspects}
+% \subsection{Gemini\_PMC}
+% \begin{enumerate}
+%   \item Made using vertex ai studio by Google
+%   \item It makes use of an undisclosed predefined Parameter Efficient Fine Tuning (PEFT) method to fine-tune the base gemini model.
+%   \item Number of epochs used in training : 4
+%   \item Learning rate multiplier in training : 1
+%   \item Fine-tuned on about 8000 question-answer pairs in jsonl format
+%   \item Evaluation was done on MMLU datasets \cite{hendryckstest2021}
+% \end{enumerate}
+% The training loss for Gemini\_PMC is shown below, x axis represents the number of steps and y axis represents the loss value.
+% \begin{figure}[H]
+%   \centering
+% \includegraphics[width=1.0\textwidth]{trainlossgeminipmc.png}
+% \caption{Training loss of Gemini\_PMC model}
+% \end{figure}
+
+% \subsection{GPT2\_PMC}
+% \begin{enumerate}
+% \item Made use of Hugging Face Transformers Trainer library \cite{huggingface} to make gpt2\_pmc
+% \item It is based on standard fine-tuning, meaning all parameters are updated
+% \item Number of epochs used in training : 13
+% \item Learning\_rate: 5e-05
+% \item Optimizer: Adam with betas=\(0.9,0.999\) and epsilon=1e-08
+% \item Train\_batch\_size: 2
+% \item Eval\_batch\_size: 8
+% \item Total\_train\_batch\_size: 16
+% \item Fine-tuned on about 8000 question-answer pairs in csv format
+% \item Automated evaluation on medical datasets was done using Open Medical-LLM Leaderboard \cite{openllmleaderboard}
+% \end{enumerate}
+
+\section*{Step 1: Data Collection}
+\begin{itemize}
+    \item \textbf{Biomedical Documents:} Collect a corpus of biomedical research papers
+    \item \textbf{Queries:} Use a dataset which contains query-document pairs and relevance judgments. Or, create queries based on the domain.
+    \item \textbf{Initial Document Retrieval:} Use an initial retrieval system to get a set of candidate documents for re-ranking.
+\end{itemize}
+
+\section*{Step 2: Preprocessing and Tokenization}
+\begin{itemize}
+    \item For each document and query, tokenize using each tokenizer and measure the difference in token length, word split, and vocabulary coverage.
+    \item Analyze how tokenization handles biomedical terms like disease names, gene names, or abbreviations.
+\end{itemize}
+
+\section*{Step 3: Embedding Generation}
+\begin{itemize}
+    \item Use pre-trained LLMs to generate embeddings for the documents and queries.
+    \item For each tokenizer, generate embeddings for both the documents and queries.
+    \item Compare embeddings of documents  and queries from different tokenizers using cosine similarity and computational efficiency
+\end{itemize}
+
+\section*{Step 4: Re-Ranking Process}
+\begin{itemize}
+    \item Start with retrieving an initial list of candidate documents.
+    \item Re-rank the documents based on their similarity scores, using embeddings generated from each tokenizer.
+\end{itemize}
+
+\section*{Step 5: Fine-Tuning for Domain Specificity}
+\begin{itemize}
+    \item Fine-tune the LLM using a pairwise ranking loss function
+    \item Where the model learns to rank more relevant documents higher
+\end{itemize}
+
+\section*{Step 6: Evaluation}
+\begin{itemize}
+  \item Compare the re-ranking results with the baseline traditional ranking methods.
+  \item Evaluate how different tokenizers (general-purpose vs. domain-specific) affect the rankings.
+\end{itemize}

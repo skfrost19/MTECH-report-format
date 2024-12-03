@@ -1,0 +1,33 @@
+%%%%%%%%%%%%%%%%%%%%%%% CHAPTER - 1 %%%%%%%%%%%%%%%%%%%%\\
+
+\chapter{Introduction}
+
+\label{C1} %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+
+
+%Cardiovascular diseases are a leading cause of mortality worldwide, and early diagnosis is crucial for effective treatment and management. Recent advancements in natural language processing have led to the development of large language models (LLMs). LLMs have the ability to understand and analyze medical data. LLMs offer fresh, intriguing chances to help physicians diagnose cardiovascular diseases early on.
+
+%\section{What is fine-tuning?}
+%Fine-tuning is a process in deep learning where a pre-trained model is taken and its internal weights and biases are adjusted to fit a new, smaller dataset for a specific task. We make use of this approach when a model has already been trained on a large dataset for a general task, and we want to adapt it to a more specific task with limited data. The goal here is to maintain the original properties of the pre-trained model and adapt it for the new task in hand. Fine-tuning makes a model a specialist in the field it is fine-tuned on.
+%\section{Why fine-tune?}
+%Fine-tuning can help reduce the amount of data and computational resources required to train a model from scratch, which can be particularly useful when working with limited data or computational resources. This has many benefits such as lesser training time and computational resources, and the ability to leverage the knowledge of the pre-trained model. Therefore, it also has lesser impact on the environment than training a new model from scratch.
+%\section{What are the different approaches to fine-tuning?}
+%\subsection{Feature extraction (repurposing)}
+%In this approach, the pre-trained model is used as a feature extractor. The model is frozen, and only the final layer is replaced with a new layer that is trained on the new dataset. This approach is useful when the new dataset is small and similar to the original dataset.
+%\subsection{Fine-tuning the entire model}
+%In this approach, the entire pre-trained model is fine-tuned on the new dataset. This approach is useful when the new dataset is large and different from the original dataset.
+
+The effectiveness of document ranking in information retrieval systems, particularly in domains like biomedical research, is often limited by traditional techniques that rely heavily on keyword matching. While methods such as BM25 \cite{enwiki:1194828429} or TF-IDF \cite{enwiki:1236851603} are widely used, they are inherently constrained by their inability to capture the full semantic meaning of both user queries and document content. As a result, users often retrieve documents that may match keywords but lack contextual relevance to their actual information needs. This shortcoming is particularly evident in complex queries involving technical jargon, synonyms, or multi-conceptual relationships, which are common in domains like biomedicine.
+
+There is a growing need for more advanced document re-ranking techniques that go beyond surface-level keyword matching. By integrating large language models (LLMs) capable of semantic understanding, we can re-rank the initial results retrieved from data stores in a way that prioritizes documents based on their deeper relevance to the user’s query. LLMs can analyze the context of words within a document, allowing them to rank documents that may not contain direct keyword matches but are semantically aligned with the intent behind the query. This represents a significant advancement over traditional methods that focus solely on frequency or proximity of keywords.
+
+Moreover, the choice of tokenization strategy—the way text is broken into smaller units for processing—plays a crucial role in the effectiveness of LLM-based re-ranking. Different tokenizers handle domain-specific vocabulary and complex terminologies with varying degrees of success. General-purpose tokenizers may not fully capture the nuances of specialized language in fields like biomedicine. In contrast, domain-specific tokenizers, are tailored to handle the intricate terminology of biomedical texts. By experimenting with multiple tokenization strategies, we aim to optimize document re-ranking for better performance in retrieving contextually relevant documents.
+
+In this study, we explore embedding-based re-ranking methods using LLMs, combined with various tokenization strategies, to improve the relevance of search results in biomedical information retrieval. We evaluate the performance of general-purpose and domain-specific tokenizers to understand their impact on document ranking and determine how fine-tuning an LLM for domain-specific queries can further enhance retrieval accuracy. By doing so, we aim to address the limitations of traditional keyword-based ranking systems and provide more accurate, contextually relevant search results for users.
+
+%\noindent\rule{\linewidth}{2pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\noindent\rule{\linewidth}{2pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
