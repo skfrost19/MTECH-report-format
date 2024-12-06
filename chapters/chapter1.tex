@@ -18,13 +18,31 @@
 %\subsection{Fine-tuning the entire model}
 %In this approach, the entire pre-trained model is fine-tuned on the new dataset. This approach is useful when the new dataset is large and different from the original dataset.
 
-The effectiveness of document ranking in information retrieval systems, particularly in domains like biomedical research, is often limited by traditional techniques that rely heavily on keyword matching. While methods such as BM25 \cite{enwiki:1194828429} or TF-IDF \cite{enwiki:1236851603} are widely used, they are inherently constrained by their inability to capture the full semantic meaning of both user queries and document content. As a result, users often retrieve documents that may match keywords but lack contextual relevance to their actual information needs. This shortcoming is particularly evident in complex queries involving technical jargon, synonyms, or multi-conceptual relationships, which are common in domains like biomedicine.
+\section{Introduction}
+The rapid expansion of textual data across various domains has introduced significant challenges in information retrieval (IR). Conventional methods, such as Term Frequency-Inverse Document Frequency (TF-IDF) and learning-to-rank models, often struggle with understanding complex queries and providing results that are both relevant and contextually meaningful. Moreover, these traditional approaches fail to adequately address challenges such as ambiguous queries and the need for contextual reasoning.
 
-There is a growing need for more advanced document re-ranking techniques that go beyond surface-level keyword matching. By integrating large language models (LLMs) capable of semantic understanding, we can re-rank the initial results retrieved from data stores in a way that prioritizes documents based on their deeper relevance to the user’s query. LLMs can analyze the context of words within a document, allowing them to rank documents that may not contain direct keyword matches but are semantically aligned with the intent behind the query. This represents a significant advancement over traditional methods that focus solely on frequency or proximity of keywords.
+\textit{Retrieval-Augmented Generation (RAG)} represents a transformative approach that combines the robust retrieval capabilities of dense embedding-based search with the generative strengths of large-scale language models (LLMs). By leveraging dense retrieval mechanisms, RAG identifies a subset of relevant documents from a large corpus, which are then utilized by the generative model to produce responses or rank documents effectively. This dual capability enables RAG to excel in open-domain applications, bridging the gap between IR and natural language generation.
 
-Moreover, the choice of tokenization strategy—the way text is broken into smaller units for processing—plays a crucial role in the effectiveness of LLM-based re-ranking. Different tokenizers handle domain-specific vocabulary and complex terminologies with varying degrees of success. General-purpose tokenizers may not fully capture the nuances of specialized language in fields like biomedicine. In contrast, domain-specific tokenizers, are tailored to handle the intricate terminology of biomedical texts. By experimenting with multiple tokenization strategies, we aim to optimize document re-ranking for better performance in retrieving contextually relevant documents.
+\subsection{Retrieval-Augmented Generation (RAG)}
+RAG is a hybrid framework that integrates two powerful paradigms: \textit{retrieval} and \textit{generation}. The process involves two primary steps:
+\begin{enumerate}
+    \item \textbf{Dense Retrieval:} A retriever, often based on neural embeddings, fetches a set of candidate documents or passages relevant to the input query. Dense retrieval mechanisms like DPR (Dense Passage Retrieval) or FAISS provide a scalable and efficient method for retrieving semantically relevant documents.
+    \item \textbf{Generative Response:} The retrieved documents are fed into a generative language model, such as GPT-3 or T5, which synthesizes a response or ranks the documents based on contextual relevance to the query.
+\end{enumerate}
+RAG overcomes the limitations of traditional retrieval systems by leveraging the generative model’s ability to fill knowledge gaps and reformulate queries dynamically. This approach is particularly effective in scenarios where queries are ambiguous or require contextual understanding beyond surface-level features.
 
-In this study, we explore embedding-based re-ranking methods using LLMs, combined with various tokenization strategies, to improve the relevance of search results in biomedical information retrieval. We evaluate the performance of general-purpose and domain-specific tokenizers to understand their impact on document ranking and determine how fine-tuning an LLM for domain-specific queries can further enhance retrieval accuracy. By doing so, we aim to address the limitations of traditional keyword-based ranking systems and provide more accurate, contextually relevant search results for users.
+\subsection{Hypothetical Document Embedding (HyDE)}
+HyDE extends the capabilities of retrieval systems by generating hypothetical answers to the input query and then evaluating the relevance of documents in relation to the generated answer. The key steps in HyDE are as follows:
+\begin{enumerate}
+    \item \textbf{Hypothetical Answer Generation:} A generative model hypothesizes an answer to the input query based on prior knowledge and context. This answer is treated as a pseudo-query.
+    \item \textbf{Embedding and Comparison:} Both the hypothetical answer and the candidate documents are encoded into dense vector embeddings. The similarity between the embeddings is used to score and rank the documents.
+\end{enumerate}
+By hypothesizing answers, HyDE effectively bridges the semantic gap between the query and the documents, especially in cases where the original query is incomplete or ambiguous. This technique has been shown to enhance the relevance of ranked documents in complex retrieval tasks.
+
+\subsection{Motivation and Problem Statement}
+Ranking documents effectively is a cornerstone of IR systems, especially in knowledge-intensive domains such as academic research, technical documentation, and enterprise search. Traditional ranking methods, such as BM25 or machine learning-based rerankers, rely heavily on surface-level features and fail to capture semantic nuances. On the other hand, the emergence of transformer-based models, such as GPT-3 and BERT, has enabled systems to understand and generate human-like responses, paving the way for novel ranking strategies.
+
+While RAG and HyDE provide robust solutions, further enhancements are required to improve ranking performance, particularly in terms of capturing deeper semantic relationships, reducing noise in retrieval, and optimizing the integration of hypothetical embeddings with generative models.
 
 %\noindent\rule{\linewidth}{2pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
