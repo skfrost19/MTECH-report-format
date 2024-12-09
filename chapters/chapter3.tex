@@ -2,46 +2,6 @@
 \chapter{Methodology}
 \label{C3} %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
-% \section{Proposed Methodology}
-% The proposed methodology for fine-tuning LLMs includes the following steps:
-% \begin{enumerate}
-%   \item \textbf{Data Collection}: Data collection from public, freely available medical research papers from PubMed Central® \cite{pmc}.
-%   \item \textbf{Data preparation}: Pre-processing the collected data, involving removal of author names, references, tables, figures, etc. Made use of Nvidia NIM API, llama3-70b-instruct for question-answer pair generation. \cite{llama3}
-%   \item \textbf{Fine-tuning}: Fine-tuning the model on question-answer pairs.
-%   \item \textbf{Model Evaluation}: Evaluation of trained model on benchmarking datasets.
-% \end{enumerate}
-
-
-% \section{Technical Aspects}
-% \subsection{Gemini\_PMC}
-% \begin{enumerate}
-%   \item Made using vertex ai studio by Google
-%   \item It makes use of an undisclosed predefined Parameter Efficient Fine Tuning (PEFT) method to fine-tune the base gemini model.
-%   \item Number of epochs used in training : 4
-%   \item Learning rate multiplier in training : 1
-%   \item Fine-tuned on about 8000 question-answer pairs in jsonl format
-%   \item Evaluation was done on MMLU datasets \cite{hendryckstest2021}
-% \end{enumerate}
-% The training loss for Gemini\_PMC is shown below, x axis represents the number of steps and y axis represents the loss value.
-% \begin{figure}[H]
-%   \centering
-% \includegraphics[width=1.0\textwidth]{trainlossgeminipmc.png}
-% \caption{Training loss of Gemini\_PMC model}
-% \end{figure}
-
-% \subsection{GPT2\_PMC}
-% \begin{enumerate}
-% \item Made use of Hugging Face Transformers Trainer library \cite{huggingface} to make gpt2\_pmc
-% \item It is based on standard fine-tuning, meaning all parameters are updated
-% \item Number of epochs used in training : 13
-% \item Learning\_rate: 5e-05
-% \item Optimizer: Adam with betas=\(0.9,0.999\) and epsilon=1e-08
-% \item Train\_batch\_size: 2
-% \item Eval\_batch\_size: 8
-% \item Total\_train\_batch\_size: 16
-% \item Fine-tuned on about 8000 question-answer pairs in csv format
-% \item Automated evaluation on medical datasets was done using Open Medical-LLM Leaderboard \cite{openllmleaderboard}
-% \end{enumerate}
 
 This section outlines the proposed framework for document ranking using Retrieval-Augmented Generation (RAG) enhanced with Hypothetical Document Embedding (HyDE). The methodology integrates dense retrieval mechanisms with generative models to improve ranking accuracy and relevance. The system is designed to address key challenges in semantic understanding, contextual reasoning, and efficient ranking.
 
@@ -56,6 +16,13 @@ The proposed methodology consists of the following core components:
 \end{enumerate}
 
 The overall workflow is illustrated in Fig.~\ref{fig:system_architecture}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{IMAGE/RAG_archi.png} % Replace with actual file name
+    \caption{System architecture of the proposed methodology.}
+    \label{fig:system_architecture}
+\end{figure}
 
 \begin{figure}[ht]
     \centering
