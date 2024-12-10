@@ -11,38 +11,68 @@
 \clearpage
 
 
-\section{Literature Table} \label{Chapter2_SectionA}
-% \lipsum
-%
-% *** FIGURE Example *** %
-% \begin{figure}[t]
-% \centering
-% \includegraphics[width=5.8in, clip, keepaspectratio]{CHAPTER_IMAGES/CHAPTER_2/CHAPTER2_FIGURE1.png}
-% \caption{Example figure of Neural Network Zoo by Asimov Institute \parencite{AsimovInstitute}}
-% \label{fig_chap2_1}
-% \end{figure}
-%
-% \subsection{Subsection A.1} \label{chapter2_SubsectionA.1}
-% \lipsum \parencite{AsimovInstitute}
-%
-% *** TABLE Example *** %
-\begin{center}
-\begin{tabular}{ |p{2cm}||p{=2.7cm}|p{9cm}|  }
- \hline
- \ Authors & Paper & Findings\\
- \hline
-  {Z. Qin, R. Jagerman, K. Hui, et al. \cite{rerank1}}&{Large Language Models are Effective Text Rankers with Pairwise Ranking Prompting}&{This paper introduces “pairwise ranking prompting” for document ranking. It takes two documents and a query, and the LLM is asked to rank the two based on relevance to query. It uses off the shelf LLMs without domain-specific fine tuning. Context is given to the LLM about the task which is - ranking documents making use of few-shot learning.}\\
- \hline
-  { B. Nouriinanloo and M. Lamothe \cite{rerank2}} & {Re-Ranking Step by Step: Investigating Pre-Filtering for Re-Ranking with Large Language Models}&{This paper introduces an LLM-based pre-filtering step before re-ranking, where passages or documents are filtered out based on their relevance to a query. The pre-filtering helps reduce the noise that could misguide the re-ranking process. Then use of LLM is made for these best candidates to re-rank them. This led to development of re-rankers which were much smaller yet effective}\\
-  \hline
-  {S. Zhuang, B. Liu, B. Koopman, and G. Zuccon \cite{rerank3}} & {Open-source Large Language Models are Strong Zero-shot Query Likelihood Models for Document Ranking}&{This paper explores using open-source LLMs to estimate how likely a document is to be relevant to a given query. Higher likelihood means higher rank. The models perform effectively in zero-shot settings, where no task-specific training is provided. The paper also shows that additional instruction fine-tuning may hinder effectiveness}\\
-  \hline
-  {A. Drozdov, H. Zhuang, Z. Dai, et al. \cite{rerank4}} & {PaRaDe: Passage Ranking using Demonstrations with Large Language Models}&{This research addresses the limitations of zero-shot learning. Incorporates few-shot demonstrations into prompt. Demonstrations are pairs of passages and their relevance scores. The paper argues that presenting the LLM with difficult examples yield better results in ranking tasks. Difficult here means queries or passages that present more challenge to LLM to correctly rank}\\
-  \hline
-  % {Labrak, Y., Bazoge, A., Morin, E., et al.\cite{biomistral}}&{BioMistral: A Collection of Open-Source Pretrained Large Language Models for Medical Domains} & {Explores ensemble models created using different model
-  % merging techniques, demonstrating an improvement in performance. Also shows superior performance in multilingual question answering tasks}\\
-  % \hline
-\end{tabular}
-\captionof{table}{Literature Table}
-\end{center}
-\vspace{-0.75cm}
+% \section{Literature Review}
+
+\section*{Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks}
+
+The research by Lewis et al. (2020) explores Retrieval-Augmented Generation (RAG), a hybrid model that combines parametric and non-parametric memory for addressing knowledge-intensive NLP tasks. Traditional pre-trained models like BERT and T5 store knowledge in parameters, but they suffer from limitations such as an inability to provide provenance for predictions, update world knowledge, or handle knowledge-intensive tasks effectively. RAG addresses these limitations by integrating a pre-trained seq2seq model with a non-parametric memory based on dense vector indexing of external data sources like Wikipedia.
+
+Prior works have extensively studied pre-trained language models (e.g., GPT-2, BERT) and retrieval-based models (e.g., REALM, DPR) for various tasks, such as open-domain question answering (QA), fact verification, and abstractive generation. However, these approaches often focus on either parametric or non-parametric knowledge sources exclusively, limiting their flexibility and scope. RAG builds upon such foundational research by introducing a retrieval mechanism that allows dynamic access to external knowledge while leveraging the strengths of pre-trained generative models.
+
+The authors compare two retrieval-augmented mechanisms: RAG-Sequence, which uses a single retrieved document for generating the entire sequence, and RAG-Token, which dynamically retrieves documents for each token. These mechanisms are evaluated across multiple tasks, demonstrating significant improvements in factual accuracy and diversity of outputs compared to state-of-the-art baselines like BART.
+
+Furthermore, the RAG framework introduces innovations in training, such as end-to-end fine-tuning of the retriever and generator components, and decoding strategies, including "Thorough Decoding" and "Fast Decoding." These advancements enable the model to achieve state-of-the-art results in open-domain QA datasets like Natural Questions, TriviaQA, and WebQuestions, as well as in tasks requiring abstractive and generative capabilities, such as MS MARCO and Jeopardy question generation.
+
+In conclusion, RAG represents a significant advancement in integrating retrieval-based mechanisms with generative models, addressing critical gaps in existing approaches for knowledge-intensive NLP tasks. Its flexibility and scalability make it a promising direction for future research in hybrid memory architectures.
+
+\section*{Precise Zero-Shot Dense Retrieval without Relevance Labels}
+
+
+Dense retrieval has emerged as a prominent technique for retrieving documents using semantic embedding similarities. The foundations of dense retrieval were established with methods such as negative sampling \cite{xu2022negativesamplingcontrastiverepresentation}, distillation \cite{hinton2015distillingknowledgeneuralnetwork}, and task-specific pre-training. However, zero-shot dense retrieval remains challenging due to the lack of relevance labels and the difficulty of generalizing across tasks.
+
+Several studies have explored approaches to address these challenges. Modern large language models (LLMs) like GPT-3 \cite{gpt3} and BERT \cite{devlin2019bertpretrainingdeepbidirectional} have demonstrated strong natural language understanding and generation capabilities, which are further enhanced when trained on instruction-based data. Instruction-following LLMs have shown promise in zero-shot settings by generalizing to unseen tasks using minimal supervision.
+
+The concept of Hypothetical Document Embeddings (HyDE) was introduced as a novel approach to dense retrieval. This method generates hypothetical documents based on a given query using an instruction-following LLM. These documents, while not necessarily accurate, encapsulate relevance patterns, which are then grounded in the actual corpus using a contrastive encoder like Contriever \cite{izacard2022unsuperviseddenseinformationretrieval}. This two-step process allows for effective retrieval without requiring relevance judgments.
+
+HyDE demonstrates significant improvements over baseline models such as BM25 and Contriever in zero-shot dense retrieval scenarios. Its applicability spans various tasks, including web search, question answering, and fact verification, across multiple languages. Moreover, the model remains competitive with fine-tuned retrievers, suggesting its robustness and versatility.
+
+The literature highlights the evolving paradigm of integrating generative LLMs with dense encoders to address the limitations of traditional dense retrieval systems. This integration enables retrieval systems to leverage the contextual understanding of LLMs and the precision of dense encoders, paving the way for advancements in knowledge-intensive tasks.
+
+\section*{NV-Embed: Improved Techniques for Training LLMs as Generalist Embedding Models}
+
+Embedding-based models have been foundational in natural language processing (NLP) for representing text in dense vector forms. Early work such as Word2Vec and BERT pioneered methods for capturing semantic meaning in embeddings. These models have been extensively used for tasks like retrieval, classification, clustering, and semantic textual similarity.
+
+Recent developments have highlighted the limitations of traditional bidirectional models, such as BERT and T5, in handling general-purpose embedding tasks. Decoder-only language models (LLMs), such as GPT-3, have shown promise in surpassing bidirectional models in specific tasks by leveraging their generative capabilities and large-scale pre-training. However, decoder-only models traditionally suffer from issues like unidirectional attention and high-dimensional embeddings, which can impede their effectiveness in dense vector retrieval.
+
+The NV-Embed model builds on this progress by addressing key limitations in existing embedding models. The novel contributions include:
+\begin{itemize}
+    \item The introduction of a latent attention layer for pooling token sequences, enhancing retrieval and downstream task accuracy compared to traditional pooling methods like mean pooling or using the final token embedding.
+    \item The removal of the causal attention mask during training, allowing decoder-only LLMs to learn more expressive embeddings without being constrained by unidirectional attention.
+    \item A two-stage contrastive instruction-tuning methodology that integrates retrieval and non-retrieval tasks, improving performance across diverse embedding benchmarks.
+\end{itemize}
+
+The NV-Embed model sets a new standard by achieving a record-high score on the Massive Text Embedding Benchmark (MTEB), outperforming state-of-the-art models like E5-Mistral and Voyage-large-2-instruct. Notably, these results are achieved using only publicly available datasets, without reliance on proprietary synthetic data.
+
+In summary, NV-Embed represents a significant advancement in embedding model architecture and training methodology, addressing challenges in representation learning and task generalization in NLP.
+
+\section*{Qwen2 Technical Report}
+The Qwen2 series represents the latest advancements in large language models (LLMs) and multimodal models. It is a successor to Qwen1.5 and part of a lineage that includes models like Qwen-VL for vision-language tasks and Qwen-Audio for audio-language applications. Built on the Transformer architecture, Qwen2 models are designed for a wide range of tasks, including natural language understanding, generation, coding, mathematics, reasoning, and multilingual proficiency. These models are available in various configurations, from 0.5 billion to 72 billion parameters, along with a Mixture-of-Experts (MoE) model.
+
+The literature on LLMs highlights the progress from traditional models like GPT and BERT to more advanced architectures such as Llama-3 and Claude-3. Qwen2 improves upon these by introducing innovations like enhanced long-context training, fine-tuning strategies, and instruction-tuned variants. Additionally, the model achieves competitive or superior performance against state-of-the-art proprietary and open-weight models across multiple benchmarks, including MMLU, HumanEval, and GSM8K.
+
+The development of Qwen2 builds upon advancements in tokenizer efficiency, incorporating a byte-level byte-pair encoding tokenizer with high compression rates, facilitating its multilingual capabilities. Training on a high-quality dataset of over 7 trillion tokens across multiple languages has been critical to improving the model's reasoning and generalization abilities.
+
+Moreover, Qwen2 integrates advanced post-training techniques such as supervised fine-tuning and reinforcement learning from human feedback (RLHF) to align model outputs with human preferences. The instruction-tuned variants, such as Qwen2-72B-Instruct, demonstrate remarkable performance in human preference alignment tasks, further enhancing their utility in real-world applications.
+
+In summary, the Qwen2 series exemplifies the state-of-the-art in LLMs, leveraging cutting-edge techniques in pre-training, post-training, and model architecture to achieve exceptional performance across a diverse array of tasks and benchmarks.
+
+\section*{Large Language Models are Effective Text Rankers with Pairwise Ranking Prompting}
+The use of Large Language Models (LLMs) in ranking tasks has garnered significant attention, especially with their success in diverse NLP applications. Models like GPT-3, PaLM, and Flan-T5 have demonstrated remarkable capabilities in language understanding and generation tasks. Despite their potential, leveraging off-the-shelf LLMs for ranking has been challenging due to their limitations in pointwise and listwise formulations.
+
+Traditional ranking models, such as monoBERT and RankT5, focus on fine-tuning pre-trained models with supervised data. These models achieve state-of-the-art performance in supervised settings but require extensive labeled data for effective training. Conversely, recent advancements in unsupervised methods using LLMs, like Relevance Generation (RG) and Unsupervised Passage Reranker (UPR), have attempted to bridge this gap. However, these methods often fall short of fine-tuned baselines in standard benchmarks.
+
+The Pairwise Ranking Prompting (PRP) paradigm introduces an innovative approach by simplifying ranking tasks through pairwise comparisons. Unlike pointwise methods, which require calibrated relevance scores, or listwise approaches, which struggle with input order sensitivity, PRP reduces task complexity by comparing document pairs directly. This method is particularly effective for open-source, moderate-sized LLMs, outperforming many supervised and unsupervised baselines across benchmarks like TREC-DL and BEIR.
+
+PRP demonstrates its robustness and efficiency through various adaptations, including all-pair comparisons, sorting-based approaches, and sliding window techniques. These methods address key limitations of earlier ranking formulations while achieving competitive or superior performance to state-of-the-art solutions, including GPT-4-based models.
+
+In summary, the evolution of ranking methodologies highlights the growing importance of innovative prompting strategies, such as PRP, for utilizing LLMs effectively in text ranking tasks. The advancements in PRP underline its potential to drive further research in ranking and retrieval tasks using LLMs.
