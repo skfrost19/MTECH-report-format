@@ -22,26 +22,37 @@ The experiments were conducted on two distinct configurations:
     \end{itemize}
 \end{itemize}
 
+\section{Dataset Sampling Note}
+All evaluations were conducted on subsets of the MS-MARCO dataset:
+\begin{itemize}
+    \item Original MS-MARCO dataset size: 22GB
+    \item Subset used for NV-Embed evaluation: 115,533 rows
+    \item Subset used for HyDE experiments: 16,000 rows
+\end{itemize}
+
+The sampling was necessary due to computational constraints while maintaining statistical significance. The subsets were randomly selected to ensure representative distribution of query types and document relationships.
+
 \section{Results Analysis}
 
 \begin{table}[ht]
     \centering
-    \caption{Performance Metrics for NV-Embed Only Approach}
+    
     \label{tab:nvembed_results}
     \begin{tabular}{|l|c|}
         \hline
         \textbf{Metric} & \textbf{Value} \\
         \hline
         MRR (Ground Truth) & 0.3844 \\
-        MRR (Obtained) & 0.3365 \\
-        Accuracy & 0.4874 \\
+        MRR (Obtained) & 33.65\%\\
+        Accuracy & 48.74\% \\
         \hline
     \end{tabular}
+    \caption{Performance Metrics for NV-Embed Only Approach}
 \end{table}
 
 \begin{table}[ht]
     \centering
-    \caption{Performance Metrics for Combined Approach}
+    
     \label{tab:combined_results}
     \begin{tabular}{|l|c|c|}
         \hline
@@ -50,9 +61,10 @@ The experiments were conducted on two distinct configurations:
         MRR (Ground Truth) & \multicolumn{2}{c|}{0.2258} \\
         \hline
         MRR & 0.3336 & 0.3252 \\
-        Accuracy & 0.2874 & 0.2492 \\
+        Accuracy & 28.74\% & 24.92\% \\
         \hline
     \end{tabular}
+    \caption{Performance Metrics for Combined Approach}
 \end{table}
 
 \section{Key Findings}
@@ -72,13 +84,6 @@ The experiments were conducted on two distinct configurations:
     \end{itemize}
 \end{enumerate}
 
-\begin{figure}[ht]
-    \centering
-    % Add a bar chart comparing the metrics
-    % Replace with actual chart generation code
-    \caption{Comparative Analysis of MRR Scores}
-    \label{fig:mrr_comparison}
-\end{figure}
 \section{Observations}
 \begin{itemize}
     \item \textbf{RAG with NV-Embed Limitations:}
