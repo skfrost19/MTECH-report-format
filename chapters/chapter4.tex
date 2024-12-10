@@ -36,23 +36,24 @@ The sampling was necessary due to computational constraints while maintaining st
 
 \begin{table}[ht]
     \centering
-    
+    \caption{Performance Metrics for NV-Embed Only Approach}
     \label{tab:nvembed_results}
     \begin{tabular}{|l|c|}
         \hline
         \textbf{Metric} & \textbf{Value} \\
         \hline
         MRR (Ground Truth) & 0.3844 \\
-        MRR (Obtained) & 33.65\%\\
+        \hline
+        MRR (Obtained) & 0.3365 \\
+        \hline
         Accuracy & 48.74\% \\
         \hline
     \end{tabular}
-    \caption{Performance Metrics for NV-Embed Only Approach}
 \end{table}
 
 \begin{table}[ht]
     \centering
-    
+    \caption{Performance Metrics for Combined Approach}
     \label{tab:combined_results}
     \begin{tabular}{|l|c|c|}
         \hline
@@ -61,10 +62,10 @@ The sampling was necessary due to computational constraints while maintaining st
         MRR (Ground Truth) & \multicolumn{2}{c|}{0.2258} \\
         \hline
         MRR & 0.3336 & 0.3252 \\
+        \hline
         Accuracy & 28.74\% & 24.92\% \\
         \hline
     \end{tabular}
-    \caption{Performance Metrics for Combined Approach}
 \end{table}
 
 \section{Key Findings}
