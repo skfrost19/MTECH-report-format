@@ -1,0 +1,4 @@
+- Chunk Improvement techniques by anthropic
+- Fine tune the embedding model to the domain data
+- Longer context window
+- Using other RAG techniques - Query Expansion, chain-of-thought prompting, Natural Language Inference (https://www.falkordb.com/blog/advanced-rag/) 
