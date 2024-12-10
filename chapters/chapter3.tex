@@ -19,16 +19,19 @@ The overall workflow is illustrated in Fig.~\ref{fig:system_architecture}.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=\linewidth]{IMAGE/RAG_archi.png} % Replace with actual file name
-    \caption{System architecture of the proposed methodology.}
-    \label{fig:system_architecture}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=\linewidth]{IMAGE/RAG_HyDE_archi.png} % Replace with actual file name
-    \caption{System architecture of the proposed methodology.}
-    \label{fig:system_architecture}
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{IMAGE/RAG_archi.png}
+        \caption{Architecture 1: RAG}
+        \label{fig:system_architecture}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{IMAGE/RAG_HyDE_archi.png}
+        \caption{Architecture 2: HyDE}
+        \label{fig:system_architecture}
+    \end{minipage}
 \end{figure}
 
 \subsection{Dense Retrieval}
@@ -44,7 +47,7 @@ This stage ensures that only the most relevant documents are passed to the next 
 \subsection{Hypothetical Document Embedding (HyDE)}
 The HyDE technique is incorporated to enhance the retrieval system by generating hypothetical answers to the query and utilizing these answers to refine the ranking. The steps involved are:
 \begin{enumerate}
-    \item \textbf{Hypothetical Answer Generation:} A generative model, such as GPT-3, generates a hypothetical response to the input query. This response acts as a pseudo-query.
+    \item \textbf{Hypothetical Answer Generation:} A generative model, such as Qwen2.5-3B-Instruct\cite{qwen2.5}, generates a hypothetical response to the input query. This response acts as a pseudo-query.
     \item \textbf{Embedding Creation:} Both the hypothetical answer and the candidate documents are encoded into dense vector embeddings.
     \item \textbf{Relevance Scoring:} Cosine similarity is computed between the embeddings of the hypothetical answer and the candidate documents. This generates an additional relevance score for each document.
 \end{enumerate}
@@ -64,21 +67,28 @@ This step ensures that the ranking reflects not just surface-level similarity bu
 \subsection{Implementation Details}
 The proposed methodology was implemented using state-of-the-art tools and frameworks. Key details include:
 \begin{itemize}
-    \item \textbf{Dense Retriever:} The DPR (Dense Passage Retriever) model from Hugging Face was used for encoding queries and documents.
-    \item \textbf{Generative Model:} The GPT-3 model was utilized for hypothetical answer generation and generative reranking.
-    \item \textbf{Embedding Framework:} The embeddings were normalized and processed using PyTorch for efficient similarity computation.
+    \item \textbf{Dense Retriever:} The DPR (Dense Passage Retriever) model (NV-Embed-v2)\cite{nvembed} from Nvidia was used for encoding queries and documents.
+    \item \textbf{Generative Model:} The Qwen2.5-3B-Instruct\cite{qwen2.5} model was utilized for hypothetical answer generation and generative reranking.
+    \item \textbf{Embedding Framework:} The embeddings were normalized and processed using PyTorch\cite{pytorch} for efficient similarity computation.
     \item \textbf{Optimization:} Techniques such as batching and GPU acceleration were used to optimize performance on large datasets.
 \end{itemize}
 
 \subsection{Evaluation Pipeline}
-The evaluation of the proposed methodology involves benchmarking its performance on standard datasets. The evaluation metrics include:
+The evaluation of the proposed methodology involves benchmarking its performance on standard dataset MS-MARCO\cite{DBLP:journals/corr/NguyenRSGTMD16} The evaluation metrics include:
 \begin{itemize}
-    \item \textbf{Precision@K:} Measures the proportion of relevant documents in the top-K results.
-    \item \textbf{Mean Reciprocal Rank (MRR):} Evaluates the ranking by considering the position of the first relevant document.
-    \item \textbf{Normalized Discounted Cumulative Gain (nDCG):} Assesses the quality of the ranking by accounting for the relevance and order of documents.
+       \item \textbf{Accuracy:} This metric measures the proportion of correct predictions (both true positives and true negatives) among the total number of cases examined. It is calculated as:
+    \begin{equation}
+        \text{Accuracy} = \frac{\text{True Positives} + \text{True Negatives}}{\text{Total Number of Samples}}
+    \end{equation}
+    In our experiments, accuracy serves as a primary metric to evaluate the overall performance of the model across all classes.
+        \item \textbf{Mean Reciprocal Rank (MRR):} Evaluates the ranking by considering the position of the first relevant document. For a set of queries Q, MRR is calculated as:
+    \begin{equation}
+        \text{MRR} = \frac{1}{|Q|} \sum_{i=1}^{|Q|} \frac{1}{\text{rank}_i}
+    \end{equation}
+    where $\text{rank}_i$ refers to the rank position of the first relevant document for the $i$-th query. MRR ranges from 0 to 1, with higher values indicating better ranking performance.
 \end{itemize}
 
-A detailed analysis of the results and comparisons with baseline methods is presented in Section~V.
+A detailed analysis of the results and comparisons with baseline methods is presented in Section~IV.
 
 \subsection{Workflow Summary}
 To summarize, the proposed methodology leverages dense retrieval, hypothetical embeddings, and generative reranking to achieve high-quality document rankings. By integrating these components into a unified pipeline, the system addresses key challenges in information retrieval and provides significant improvements in ranking accuracy and relevance.

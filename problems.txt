@@ -1,0 +1,2 @@
+- The passage might not contain the answers to the query. This raise a question as how much cosine similarity is a good measure of the relevance of the passage to the query, in this ranking suffers.
+- The passage contains multiple relevance, this leads to take into account some variance in the relevance of the passage to the query. This is not taken into account in the ranking.

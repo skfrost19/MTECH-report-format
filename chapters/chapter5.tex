@@ -3,17 +3,53 @@
 \clearpage
 % \label{C5} %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Conclusions}
-The proposed methodology of fine-tuning pre-trained LLMs for cardiovascular diseases has been successfully implemented. The fine-tuned models, Gemini\_PMC and GPT2\_PMC, have shown improved performance on the medical dataset, outperforming the base models. The results demonstrate the effectiveness of fine-tuning large language models for medical domain-specific tasks, highlighting the potential of LLMs in healthcare applications. 
+\section{Conclusion}
+This research presents a novel approach to document ranking by integrating Retrieval-Augmented Generation (RAG) with Hypothetical Document Embedding (HyDE). The key contributions and findings include:
+
+\begin{itemize}
+    \item An innovative architecture that combines dense retrieval mechanisms with generative models to enhance ranking accuracy
+    \item Implementation of HyDE technique that demonstrates significant improvements in handling ambiguous queries
+    \item Empirical validation on the MS-MARCO dataset showing competitive performance metrics
+    \item Successful integration of state-of-the-art models including Qwen2.5-3B-Instruct and NV-Embed-v2
+    \item Efficient optimization techniques that make the system practical for large-scale applications
+\end{itemize}
+
+The experimental results demonstrate that our proposed methodology achieves superior performance compared to traditional ranking approaches, particularly in scenarios involving complex semantic understanding and contextual reasoning.
+
 \section{Future Scope}
-\begin{enumerate}
-    \item In future a better curated set of data should be used for fine-tuning the models. As of today there is a lack of resource available for the specific field of cardiovascular diseases.
-    \item Other PEFT techniques such as LoRA, and many other adapter based methods can be used for faster fine-tuning of the models.
-    \item The models can be further evaluated on a larger and more diverse set of medical datasets to assess their capabilities. An approach that may be used is by involving medical professionals to rate responses to the questions set by them.
-    \item The proposed methodology can be extended to other medical domains, such as oncology, neurology, and radiology, to develop specialized LLMs for various healthcare applications.
-    \item The future work can also include the development of multimodal LLMs that combine text, image, and other data modalities to enhance the performance of medical models. 
-    \item Involving LLMs into healthcare has a huge risk associated with it. To mitigate this risk, the models can be further tuned on an extensive set of ethical guidelines. This won't eliminate the risk but will keep the model in check to produce reponses that can cause potential damage to health without a medical expert's supervision.
-\end{enumerate}
+Several promising directions for future research and development have been identified:
+
+\subsection{Technical Enhancements}
+\begin{itemize}
+    \item \textbf{Model Scaling:} Investigation of larger language models and their impact on ranking quality
+    \item \textbf{Embedding Optimization:} Development of more efficient embedding techniques to reduce computational overhead
+    \item \textbf{Multi-modal Extension:} Integration of image and video content in the ranking pipeline
+    \item \textbf{Cross-lingual Support:} Extension of the framework to handle multiple languages effectively
+\end{itemize}
+
+\subsection{Architectural Improvements}
+\begin{itemize}
+    \item \textbf{Dynamic HyDE:} Implementation of adaptive hypothetical document generation based on query complexity
+    \item \textbf{Hybrid Architectures:} Exploration of combining sparse and dense retrieval methods
+    \item \textbf{Distributed Processing:} Development of distributed architectures for improved scalability
+    \item \textbf{Real-time Processing:} Optimization for real-time ranking applications
+\end{itemize}
+
+\subsection{Application Areas}
+\begin{itemize}
+    \item \textbf{Domain Adaptation:} Extension to specific domains such as legal, medical, or scientific literature
+    \item \textbf{Personalization:} Integration of user preferences and historical interactions
+    \item \textbf{Interactive Systems:} Development of interactive ranking systems with user feedback
+    \item \textbf{Enterprise Search:} Adaptation for enterprise-scale document management systems
+\end{itemize}
+
+\subsection{Evaluation and Benchmarking}
+\begin{itemize}
+    \item \textbf{Metric Development:} Creation of new evaluation metrics for context-aware ranking
+    \item \textbf{Benchmark Datasets:} Development of comprehensive benchmark datasets for specific domains
+    \item \textbf{Performance Analysis:} In-depth analysis of computational requirements and optimization opportunities
+    \item \textbf{User Studies:} Conducting extensive user studies to validate real-world effectiveness
+\end{itemize}
 
 
 % \begin{enumerate}[label=(\roman*)]
