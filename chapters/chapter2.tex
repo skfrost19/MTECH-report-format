@@ -13,11 +13,11 @@
 
 % \section{Literature Review}
 
-\section*{Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks}
+\section*{Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks\cite{rag}}
 
-The research by Lewis et al. (2020) explores Retrieval-Augmented Generation (RAG), a hybrid model that combines parametric and non-parametric memory for addressing knowledge-intensive NLP tasks. Traditional pre-trained models like BERT and T5 store knowledge in parameters, but they suffer from limitations such as an inability to provide provenance for predictions, update world knowledge, or handle knowledge-intensive tasks effectively. RAG addresses these limitations by integrating a pre-trained seq2seq model with a non-parametric memory based on dense vector indexing of external data sources like Wikipedia.
+The research by Lewis et al. (2020) explores Retrieval-Augmented Generation (RAG), a hybrid model that combines parametric and non-parametric memory for addressing knowledge-intensive NLP tasks. Traditional pre-trained models like BERT\cite{devlin2019bertpretrainingdeepbidirectional} and T5 store knowledge in parameters, but they suffer from limitations such as an inability to provide provenance for predictions, update world knowledge, or handle knowledge-intensive tasks effectively. RAG addresses these limitations by integrating a pre-trained seq2seq model with a non-parametric memory based on dense vector indexing of external data sources like Wikipedia.
 
-Prior works have extensively studied pre-trained language models (e.g., GPT-2, BERT) and retrieval-based models (e.g., REALM, DPR) for various tasks, such as open-domain question answering (QA), fact verification, and abstractive generation. However, these approaches often focus on either parametric or non-parametric knowledge sources exclusively, limiting their flexibility and scope. RAG builds upon such foundational research by introducing a retrieval mechanism that allows dynamic access to external knowledge while leveraging the strengths of pre-trained generative models.
+Prior works have extensively studied pre-trained language models (e.g., GPT-2, BERT) and retrieval-based models (e.g., REALM\cite{guu2020realmretrievalaugmentedlanguagemodel}, DPR\cite{dpr}) for various tasks, such as open-domain question answering (QA), fact verification, and abstractive generation. However, these approaches often focus on either parametric or non-parametric knowledge sources exclusively, limiting their flexibility and scope. RAG builds upon such foundational research by introducing a retrieval mechanism that allows dynamic access to external knowledge while leveraging the strengths of pre-trained generative models.
 
 The authors compare two retrieval-augmented mechanisms: RAG-Sequence, which uses a single retrieved document for generating the entire sequence, and RAG-Token, which dynamically retrieves documents for each token. These mechanisms are evaluated across multiple tasks, demonstrating significant improvements in factual accuracy and diversity of outputs compared to state-of-the-art baselines like BART.
 
@@ -25,7 +25,7 @@ Furthermore, the RAG framework introduces innovations in training, such as end-t
 
 In conclusion, RAG represents a significant advancement in integrating retrieval-based mechanisms with generative models, addressing critical gaps in existing approaches for knowledge-intensive NLP tasks. Its flexibility and scalability make it a promising direction for future research in hybrid memory architectures.
 
-\section*{Precise Zero-Shot Dense Retrieval without Relevance Labels}
+\section*{Precise Zero-Shot Dense Retrieval without Relevance Labels\cite{hyde}}
 
 
 Dense retrieval has emerged as a prominent technique for retrieving documents using semantic embedding similarities. The foundations of dense retrieval were established with methods such as negative sampling \cite{xu2022negativesamplingcontrastiverepresentation}, distillation \cite{hinton2015distillingknowledgeneuralnetwork}, and task-specific pre-training. However, zero-shot dense retrieval remains challenging due to the lack of relevance labels and the difficulty of generalizing across tasks.
@@ -38,11 +38,11 @@ HyDE demonstrates significant improvements over baseline models such as BM25 and
 
 The literature highlights the evolving paradigm of integrating generative LLMs with dense encoders to address the limitations of traditional dense retrieval systems. This integration enables retrieval systems to leverage the contextual understanding of LLMs and the precision of dense encoders, paving the way for advancements in knowledge-intensive tasks.
 
-\section*{NV-Embed: Improved Techniques for Training LLMs as Generalist Embedding Models}
+\section*{NV-Embed: Improved Techniques for Training LLMs as Generalist Embedding Models\cite{nvembed}}
 
-Embedding-based models have been foundational in natural language processing (NLP) for representing text in dense vector forms. Early work such as Word2Vec and BERT pioneered methods for capturing semantic meaning in embeddings. These models have been extensively used for tasks like retrieval, classification, clustering, and semantic textual similarity.
+Embedding-based models have been foundational in natural language processing (NLP) for representing text in dense vector forms. Early work such as Word2Vec\cite{word2vec} and BERT\cite{devlin2019bertpretrainingdeepbidirectional} pioneered methods for capturing semantic meaning in embeddings. These models have been extensively used for tasks like retrieval, classification, clustering, and semantic textual similarity.
 
-Recent developments have highlighted the limitations of traditional bidirectional models, such as BERT and T5, in handling general-purpose embedding tasks. Decoder-only language models (LLMs), such as GPT-3, have shown promise in surpassing bidirectional models in specific tasks by leveraging their generative capabilities and large-scale pre-training. However, decoder-only models traditionally suffer from issues like unidirectional attention and high-dimensional embeddings, which can impede their effectiveness in dense vector retrieval.
+Recent developments have highlighted the limitations of traditional bidirectional models, such as BERT and T5, in handling general-purpose embedding tasks. Decoder-only language models (LLMs), such as GPT-3\cite{gpt3}, have shown promise in surpassing bidirectional models in specific tasks by leveraging their generative capabilities and large-scale pre-training. However, decoder-only models traditionally suffer from issues like unidirectional attention and high-dimensional embeddings, which can impede their effectiveness in dense vector retrieval.
 
 The NV-Embed model builds on this progress by addressing key limitations in existing embedding models. The novel contributions include:
 \begin{itemize}
@@ -55,7 +55,7 @@ The NV-Embed model sets a new standard by achieving a record-high score on the M
 
 In summary, NV-Embed represents a significant advancement in embedding model architecture and training methodology, addressing challenges in representation learning and task generalization in NLP.
 
-\section*{Qwen2 Technical Report}
+\section*{Qwen2 Technical Report\cite{qwen2.5}}
 The Qwen2 series represents the latest advancements in large language models (LLMs) and multimodal models. It is a successor to Qwen1.5 and part of a lineage that includes models like Qwen-VL for vision-language tasks and Qwen-Audio for audio-language applications. Built on the Transformer architecture, Qwen2 models are designed for a wide range of tasks, including natural language understanding, generation, coding, mathematics, reasoning, and multilingual proficiency. These models are available in various configurations, from 0.5 billion to 72 billion parameters, along with a Mixture-of-Experts (MoE) model.
 
 The literature on LLMs highlights the progress from traditional models like GPT and BERT to more advanced architectures such as Llama-3 and Claude-3. Qwen2 improves upon these by introducing innovations like enhanced long-context training, fine-tuning strategies, and instruction-tuned variants. Additionally, the model achieves competitive or superior performance against state-of-the-art proprietary and open-weight models across multiple benchmarks, including MMLU, HumanEval, and GSM8K.
@@ -66,8 +66,8 @@ Moreover, Qwen2 integrates advanced post-training techniques such as supervised 
 
 In summary, the Qwen2 series exemplifies the state-of-the-art in LLMs, leveraging cutting-edge techniques in pre-training, post-training, and model architecture to achieve exceptional performance across a diverse array of tasks and benchmarks.
 
-\section*{Large Language Models are Effective Text Rankers with Pairwise Ranking Prompting}
-The use of Large Language Models (LLMs) in ranking tasks has garnered significant attention, especially with their success in diverse NLP applications. Models like GPT-3, PaLM, and Flan-T5 have demonstrated remarkable capabilities in language understanding and generation tasks. Despite their potential, leveraging off-the-shelf LLMs for ranking has been challenging due to their limitations in pointwise and listwise formulations.
+\section*{Large Language Models are Effective Text Rankers with Pairwise Ranking Prompting\cite{rerank1}}
+The use of Large Language Models (LLMs) in ranking tasks has garnered significant attention, especially with their success in diverse NLP applications. Models like GPT-3\cite{gpt3}, PaLM\cite{palm}, and Flan-T5 have demonstrated remarkable capabilities in language understanding and generation tasks. Despite their potential, leveraging off-the-shelf LLMs for ranking has been challenging due to their limitations in pointwise and listwise formulations.
 
 Traditional ranking models, such as monoBERT and RankT5, focus on fine-tuning pre-trained models with supervised data. These models achieve state-of-the-art performance in supervised settings but require extensive labeled data for effective training. Conversely, recent advancements in unsupervised methods using LLMs, like Relevance Generation (RG) and Unsupervised Passage Reranker (UPR), have attempted to bridge this gap. However, these methods often fall short of fine-tuned baselines in standard benchmarks.
 
